@@ -101,12 +101,69 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Blank</h1>
+                        <h1 class="page-header">Ground Motion Amplification</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-6" id="soil-layer-form">
+                        <!-- Adds a dropdown select list of available ground motion -->
+                        <div class="row">
+                            <!-- <div class="col-lg-12"> -->
+                                <?php include 'ground_motion_select.php';?>
+                            <!-- </div> -->
+                        </div>
+                        </br>
+                        <div class="row">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Add Borehole Data
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <div class="soil-layer-input" id="soil-layers">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Depth of the layer</label>
+                                                    <input class="form-control depth" placeholder="Enter the depth in meters" type="number" step="any">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Soil Type</label>
+                                                    <select class="form-control soil-type">
+                                                        <option>A</option>
+                                                        <option>B</option>
+                                                        <option>C</option>
+                                                        <option>D</option>
+                                                        <option>E</option>
+                                                        <option>F</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- More layers will be added here dynamically  -->
+                                    </div>
+                                    <div>
+                                    <button type="button" class="btn btn-primary pull-right" id="add-soil-layers">+ Add layers</button>
+                                    </div>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-primary pull-right" id="submit-button">Submit</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- <canvas id="soil-profile" style="border:1px solid #000000;"></canvas> -->
+                        <canvas id="soil-profile"></canvas>
 
+                    </div>
+                </div>
             </div>
             <!-- /.container-fluid -->
         </div>
@@ -126,6 +183,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="../js/custom.js"></script>
 
 </body>
 

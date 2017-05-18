@@ -109,7 +109,11 @@
                 </div>
                 <!-- /.row -->
                 <!-- Adds a dropdown select list of available ground motion -->
-                <?php include 'ground_motion_select.php';?>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <?php include 'ground_motion_select.php';?>
+                    </div>
+                </div>
                 </br>
                 <div class="row">
                     <div class="col-lg-12">
