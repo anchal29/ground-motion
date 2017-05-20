@@ -10141,5 +10141,6 @@
             0.0
         ]
     ], 
-    "label": "1992, Landers - Far Field - Longitudinal 000 - Mw 7.28 - PGA 0.0471 - Time step 0.02 sec"
+    "label": "1992, Landers - Far Field - Longitudinal 000 - Mw 7.28 - PGA 0.0471 - Time step 0.02 sec", 
+    "timePeriod": 0.02
 }

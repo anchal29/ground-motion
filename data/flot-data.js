@@ -1,8 +1,6 @@
 //Ground Motion Plot
 $(document).ready(function() {
-
     $(function() {
-
         var options = {
             series: {
                 lines: {
@@ -27,7 +25,6 @@ $(document).ready(function() {
         $.plot($("#flot-line-chart"), data, options);
 
         // Fetch one series, adding to what we already have
-
         var alreadyFetched = {};
 
         $('#ground_motion_select').change(function () {
@@ -50,6 +47,7 @@ $(document).ready(function() {
                     data = []
                     data.push(series);
                 }
+                console.log(data);
                 $.plot($("#flot-line-chart"), data, options);
 
                 if (!($("#showTable:checked").length > 0)) {

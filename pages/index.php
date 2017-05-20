@@ -154,13 +154,53 @@
                             </div>
                             <!-- /.panel -->
                         </div>
-                        <div class="row">
-                            <button type="button" class="btn btn-primary pull-right" id="submit-button">Submit</button>
+                        <div>
+                            <div class="col-lg-1 pull-right">
+                                <button type="button" class="btn btn-primary" id="submit-button">Submit</button>
+                            </div>
+                            <div class="col-lg-1 pull-right">
+                                <button type="button" class="btn btn-primary" id="clear-button">Clear</button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <!-- <canvas id="soil-profile" style="border:1px solid #000000;"></canvas> -->
                         <canvas id="soil-profile"></canvas>
+
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Response Spectrum
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="response-spectrum-plot"></div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Amplified Response Spectrum
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="amp-response-spectrum-plot"></div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
 
                     </div>
                 </div>
@@ -180,6 +220,14 @@
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Flot Charts JavaScript -->
+    <script src="../vendor/flot/excanvas.min.js"></script>
+    <script src="../vendor/flot/jquery.flot.js"></script>
+    <script src="../vendor/flot/jquery.flot.pie.js"></script>
+    <script src="../vendor/flot/jquery.flot.resize.js"></script>
+    <script src="../vendor/flot/jquery.flot.time.js"></script>
+    <script src="../vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>

@@ -8001,5 +8001,6 @@
             -0.000343
         ]
     ], 
-    "label": "1978, Tabas - Far Field - Longitudinal - Mw 7.35 - PGA 0.0262 - 0.02 sec"
+    "label": "1978, Tabas - Far Field - Longitudinal - Mw 7.35 - PGA 0.0262 - 0.02 sec", 
+    "timePeriod": 0.02
 }

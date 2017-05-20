@@ -8001,5 +8001,6 @@
             -6.1e-05
         ]
     ], 
-    "label": "1994 Northridge - Far Field - Longitudinal 000 - Mw 6.7 - PGA 0.0673 - Time step 0.02 sec"
+    "label": "1994 Northridge - Far Field - Longitudinal 000 - Mw 6.7 - PGA 0.0673 - Time step 0.02 sec", 
+    "timePeriod": 0.02
 }

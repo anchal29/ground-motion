@@ -17061,5 +17061,6 @@
             0.0
         ]
     ], 
-    "label": "1992, Erzican - Far Field - Longitudinal - North South - Mw 6.69 - PGA 0.515 - Time step 0.005 sec"
+    "label": "1992, Erzican - Far Field - Longitudinal - North South - Mw 6.69 - PGA 0.515 - Time step 0.005 sec", 
+    "timePeriod": 0.005
 }
