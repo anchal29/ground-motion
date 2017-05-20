@@ -1,117 +1,148 @@
-//Ground motion amplification realted
-$(document).ready(function() {
+$(function() {
+    // Initialise the canvas
+    var canvas = document.getElementById("soil-profile");
+    var ctx = canvas.getContext("2d");
+    // Global variable to store the ground motion variable.
+    var data;
 
-    $(function() {
-        // Initialise the canvas
-        var canvas = document.getElementById("soil-profile");
-        var ctx = canvas.getContext("2d");
+    /**
+     * Resize the canvas in accordance with the div attached to the soil layer
+     * form. This way the shown soil layers in canvas looks decent. It is called
+     * when a layer is added or screen is resized.
+     */
+    function resize_canvas() {
+        var relative = document.getElementById("soil-layer-form");
+        canvas.width = $(relative).width();
+        canvas.height = $(relative).height();
+    }
 
-        // Resize the canvas whenever a layer is added or screen is resized.
-        function resize_canvas() {
-            var relative = document.getElementById("soil-layer-form");
-            canvas.width = $(relative).width();
-            canvas.height = $(relative).height();
-        }
-
-        $( window ).resize(function() {
-            resize_canvas();
-        });
-
-
-        var content =  '<div class="row">\
-                            <div class="col-lg-6">\
-                                <div class="form-group">\
-                                    <label>Depth of the layer</label>\
-                                    <input class="form-control depth" placeholder="Enter the depth in meters" type="number" step="any">\
-                                </div>\
-                            </div>\
-                            <div class="col-lg-6">\
-                                <div class="form-group">\
-                                    <label>Soil Type</label>\
-                                    <select class="form-control soil-type">\
-                                        <option>A</option>\
-                                        <option>B</option>\
-                                        <option>C</option>\
-                                        <option>D</option>\
-                                        <option>E</option>\
-                                        <option>F</option>\
-                                    </select>\
-                                </div>\
-                            </div>\
-                        </div>';
-
-        $("#add-soil-layers").click(function() {
-            $('#soil-layers').append(content);
-            resize_canvas();
-
-            // Draw soil layers
-            var layers_soil_type = $(".soil-type");
-            var layers_depth = $(".depth");
-            draw(layers_soil_type, layers_depth);
-        });
-
-        $("#clear-button").click(function() {
-            $('#soil-layers').replaceWith(content);
-            resize_canvas();
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        });
-
-        function draw(layers_soil_type, layers_depth)  {
-            var height = canvas.height;
-            var width = canvas.width;
-            no_layers = layers_depth.length - 1;
-            var soil_profile_images = [];
-            var total_depth = 0;
-            var depths = [];
-            for (var i = no_layers; i >= 1; i--) {
-                total_depth += Number($(layers_depth[i-1]).val());
-                depths.push(Number($(layers_depth[i-1]).val()));
-            }
-            for (var i = no_layers-1; i >= 0; i--) {
-                var temp = loadImage('../images/'+ $(layers_soil_type[i]).val() +'.jpg', drawImages);
-                soil_profile_images.push(temp);
-                function loadImage(src, onload) {
-                    var img = new Image();
-
-                    img.src = src;
-                    img.onload = onload;
-
-                    return img;
-                }
-                var images_loaded =  0;
-                function drawImages(){
-                    images_loaded++;
-                    // Draw all the images at once after all the images are loaded.
-                    if(images_loaded == no_layers) {
-                        var dy;
-                        var y =  100 + 48;
-                        for(var k = 0; k<soil_profile_images.length; k++) {
-                            dy = (height-208)*depths[k]/total_depth;
-                            var ptrn = ctx.createPattern(soil_profile_images[k], 'repeat');
-                            ctx.fillStyle = ptrn;
-                            ctx.fillRect(width*0.1, y, width*0.8, dy);
-                            y += dy;
-                        }               
-                    }
-                }
-            }
-            // To get grass image on the top of soil layers
-            var gras_img = new Image();
-            gras_img.src = '../images/grass.png';
-            gras_img.onload = function() {
-              var pattern = ctx.createPattern(gras_img, 'repeat');
-              ctx.fillStyle = pattern;
-              ctx.fillRect(width*.1, 60, width*0.8, 100);
-            };                 
-        };
+    $( window ).resize(function() {
         resize_canvas();
     });
 
-});
+    // content is the html code to add a layer in the soil layer form.
+    var content =  '<div class="row">\
+                        <div class="col-lg-6">\
+                            <div class="form-group">\
+                                <label>Depth of the layer</label>\
+                                <input class="form-control depth" placeholder="Enter the depth in meters" type="number" step="any" value=0>\
+                            </div>\
+                        </div>\
+                        <div class="col-lg-6">\
+                            <div class="form-group">\
+                                <label>Soil Type</label>\
+                                <select class="form-control soil-type">\
+                                    <option>A</option>\
+                                    <option>B</option>\
+                                    <option>C</option>\
+                                    <option>D</option>\
+                                    <option>E</option>\
+                                    <option>F</option>\
+                                </select>\
+                            </div>\
+                        </div>\
+                    </div>';
 
-// Initial response spectrum calculation
-$(function() {
+    /*
+     * Called when add layers button is clicked. It appends form input for one 
+     * more layer into the soil layer form. Also call draw to re-draw the canvas
+     * drawing.
+     */
+    $("#add-soil-layers").click(function() {
+        $('#soil-layers').append(content);
+        resize_canvas();
 
+        // Draw soil layers
+        var layers_soil_type = $(".soil-type");
+        var layers_depth = $(".depth");
+        draw(layers_soil_type, layers_depth);
+        amplified_response_spectrum(layers_soil_type, layers_depth);
+    });
+
+    /*
+     * Clear the canvas if clear button is clicked.
+     */
+    $("#clear-button").click(function() {
+        $('#soil-layers').empty();
+        $('#soil-layers').append(content);
+        resize_canvas();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+    /*
+     * Draw the added layer on the canvas. It is called when user clicks the add 
+     * more layers. It draws all the layers present in the soil layer form at 
+     * current reflecting the depth and soil type on the plot. The height of 
+     * added layers are normalised according to the specified depth and soil
+     * texture shows the type of soil layer.
+     */
+    function draw(layers_soil_type, layers_depth)  {
+        var height = canvas.height;
+        var width = canvas.width;
+        no_layers = layers_depth.length - 1;
+        var soil_profile_images = [];
+        var total_depth = 0;
+        var depths = [];
+        for (var i = no_layers; i >= 1; i--) {
+            total_depth += Number($(layers_depth[i-1]).val());
+            depths.push(Number($(layers_depth[i-1]).val()));
+        }
+        for (var i = no_layers-1; i >= 0; i--) {
+            // Different soil types has different images representing the 
+            // texture uniquely for each of them.
+            var temp = loadImage('../images/Soil Images/'+ $(layers_soil_type[i]).val() +'.jpg', drawImages);
+            soil_profile_images.push(temp);
+
+            /*
+             * Loads the image and when the image is loaded it calls drawImages
+             *
+             * @return Image object for the 
+             */
+            function loadImage(src, onload) {
+                var img = new Image();
+
+                img.src = src;
+                img.onload = onload;
+
+                return img;
+            }
+            var images_loaded =  0;
+
+            /*
+             * When all the images are loaded plot them together.
+             */
+            function drawImages(){
+                images_loaded++;
+                // Draw all the images at once after all the images are loaded.
+                if(images_loaded == no_layers) {
+                    var dy;
+                    var y =  100 + 48;
+                    for(var k = 0; k<soil_profile_images.length; k++) {
+                        dy = (height-208)*depths[k]/total_depth;
+
+                        // Use pattern to replicate the images and get the soil profile.
+                        var ptrn = ctx.createPattern(soil_profile_images[k], 'repeat');
+                        ctx.fillStyle = ptrn;
+                        ctx.fillRect(width*0.1, y, width*0.8, dy);
+                        y += dy;
+                    }               
+                }
+            }
+        }
+
+        // To get grass image on the top of soil layers
+        var gras_img = new Image();
+        gras_img.src = '../images/grass.png';
+        gras_img.onload = function() {
+          var pattern = ctx.createPattern(gras_img, 'repeat');
+          ctx.fillStyle = pattern;
+          ctx.fillRect(width*.1, 60, width*0.8, 100);
+        };                 
+    };
+    // Initial call.
+    resize_canvas();
+
+    // Initial response spectrum calculation without considering site effects.
     var options = {
         series: {
             lines: {
@@ -131,6 +162,13 @@ $(function() {
             }
         }
     };
+
+    /**
+     * Calculated response spectrum for choosen ground motion using central 
+     * difference method.
+     *
+     * @return Object with label and response spectrum data.
+     */    
     function response_spectrum(ground_motion_data) {
         // Isitialising variables.
         var index     = 0,
@@ -197,28 +235,32 @@ $(function() {
             fdata.push([timePeriod, accel_max[index]]);
             index += 1;
         }
-        console.log(disp_max);
         return {data: fdata, label: 'Response Sprectrum'};
 
     }
 
+    /*
+     * If the ground motion is changed reload the data from server. Calculate 
+     * and plot the response spectrum.
+     */
     $('#ground_motion_select').change(function () {
         var reponse_data = [];
         $.plot($("#response-spectrum-plot"), reponse_data, options);
         var file_name = document.getElementById("ground_motion_select").value;
         var dataurl = "../Ground Motion/" + file_name + ".json";
+        data = [];
 
+        /*
+         * Plot the response spectrum for the selected ground motion.
+         */
         function onDataReceived(series) {
-            var data = [];
             for(var i = 0; i < series.data.length; i++) {
                 data.push(series.data[i][1]);
             }
             response_data = response_spectrum(data);
             var new_data = [];
             new_data.push(response_data);
-            console.log(response_data);
             $.plot($("#response-spectrum-plot"), new_data, options);
-            // console.log('Here');
         }
         $.ajax({
             url: dataurl,
@@ -226,11 +268,17 @@ $(function() {
             dataType: "json",
             success: onDataReceived
         });
-    // Load the first series by default, so we don't have an empty plot
     });
+    // Load the first series by default, so we don't have an empty plot
     $('#ground_motion_select').change();
-});
+    
+    /*
+     * Calculated the amplified response spectrum considering site conditions.
+     * Here taking the provided soil profile for the purpose.
+     */    
+    function amplified_response_spectrum(layers_soil_type, layers_depth) {
+        // Calculating the NHERP shear wave velocity.
+        // @todo
+    }
 
-// Amplified response spectrum calculation
-$(function() {
 });

@@ -106,16 +106,17 @@
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
+
                 <div class="row">
                     <div class="col-lg-6" id="soil-layer-form">
                         <!-- Adds a dropdown select list of available ground motion -->
-                        <div class="row">
+                        <!-- <div class="row"> -->
                             <!-- <div class="col-lg-12"> -->
                                 <?php include 'ground_motion_select.php';?>
                             <!-- </div> -->
-                        </div>
+                        <!-- </div> -->
                         </br>
-                        <div class="row">
+                        <!-- <div class="row"> -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     Add Borehole Data
@@ -127,7 +128,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label>Depth of the layer</label>
-                                                    <input class="form-control depth" placeholder="Enter the depth in meters" type="number" step="any">
+                                                    <input class="form-control depth" placeholder="Enter the depth in meters" type="number" step="any" value=0>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -153,15 +154,17 @@
                                 <!-- /.panel-body -->
                             </div>
                             <!-- /.panel -->
-                        </div>
-                        <div>
-                            <div class="col-lg-1 pull-right">
+                        <!-- </div> -->
+                        <!-- <div class="col-lg-2 col-lg-offset-9"> -->
+                            <p class="pull-right">
+                            <!-- <div class="col-lg-1 pull-right"> -->
+                                <button type="button" class="btn btn-primary" id="clear-button">Clear All</button>
+                            <!-- </div> -->
+                            <!-- <div class="col-lg-1 pull-right"> -->
                                 <button type="button" class="btn btn-primary" id="submit-button">Submit</button>
-                            </div>
-                            <div class="col-lg-1 pull-right">
-                                <button type="button" class="btn btn-primary" id="clear-button">Clear</button>
-                            </div>
-                        </div>
+                            <!-- </div> -->
+                            </p>
+                        <!-- </div> -->
                     </div>
                     <div class="col-lg-6">
                         <!-- <canvas id="soil-profile" style="border:1px solid #000000;"></canvas> -->
@@ -171,7 +174,7 @@
                 </div>
                 <br/>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Response Spectrum
@@ -187,7 +190,7 @@
                         <!-- /.panel -->
 
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Amplified Response Spectrum
