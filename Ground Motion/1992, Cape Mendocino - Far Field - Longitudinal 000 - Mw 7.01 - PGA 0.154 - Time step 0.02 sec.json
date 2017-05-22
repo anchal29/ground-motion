@@ -8802,5 +8802,5 @@
         ]
     ], 
     "label": "1992, Cape Mendocino - Far Field - Longitudinal 000 - Mw 7.01 - PGA 0.154 - Time step 0.02 sec", 
-    "timePeriod": 0.02
+    "timeStep": 0.02
 }

@@ -3650,5 +3650,5 @@
         ]
     ], 
     "label": "chamba", 
-    "timePeriod": 0.02
+    "timeStep": 0.02
 }

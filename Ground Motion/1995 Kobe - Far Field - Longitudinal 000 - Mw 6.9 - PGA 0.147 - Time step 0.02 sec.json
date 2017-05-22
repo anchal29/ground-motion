@@ -15602,5 +15602,5 @@
         ]
     ], 
     "label": "1995 Kobe - Far Field - Longitudinal 000 - Mw 6.9 - PGA 0.147 - Time step 0.02 sec", 
-    "timePeriod": 0.02
+    "timeStep": 0.02
 }
