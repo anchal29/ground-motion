@@ -61,7 +61,7 @@ $(function() {
     });
 
     /*
-     *
+     * Submit button callback.
      */
     $("#submit-button").click(function() {
         // Draw soil layers
@@ -272,7 +272,7 @@ $(function() {
             fdata.push([timePeriod, accel_max[index]/g]);
             index += 1;
         }
-        return {data: fdata, label: 'Response Sprectrum'};
+        return {data: fdata, label: 'Response Sprectrum at bedrock level'};
 
     }
 
@@ -353,17 +353,12 @@ $(function() {
             time += (layer_depth/1500);
         }
         avg_shear_vel = total_depth/time;
-        console.log(avg_shear_vel);
         for(var i = 0; i<=3; i++){
             if(avg_shear_vel >= temp[i]){
                 cal_soil_type = [i + 'A'.charCodeAt(0), String.fromCharCode(i + 'A'.charCodeAt(0)), i];
                 break;
             }
         }
-        // Using Raghukanth et al. results
-        // a1 = [0, 0, -0.89, -2.61];
-        // a2 = [0.36, 0.49, 0.66, 0.8];
-        // delta = [0.03, 0.08, 0.23, 0.36];
         for(var i = 0; i < response_data.data.length; i++) {
             // Bed rock acceleration
             br_acc = response_data.data[i][1];
@@ -372,9 +367,10 @@ $(function() {
             amp_motion.push(amp_factor * br_acc);
             amp_response.push([response_data.data[i][0], amp_factor * br_acc]);
         }
-        amp_response = [{data: amp_response, label: 'Amplified Response Sprectrum'}];
+        amp_response = [{data: amp_response, label: 'Response Sprectrum at surface'}];
         amp_response.push(response_data);
         $.plot($("#amp-response-spectrum-plot"), amp_response, options);
+        return amp_response;
     }
     time_period = [0, 0.01, 0.015, 0.02, 0.03, 0.04, 0.05, 0.06, 0.075, 0.09, 0.1, 0.15, 0.2, 0.3,  0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9, 1, 1.2, 1.5, 2, 2.5, 3, 5];
     a2 = [[0.36, 0.35, 0.31, 0.26, 0.25, 0.31, 0.36, 0.39, 0.43, 0.46, 0.47, 0.50, 0.51, 0.53, 0.52   , 0.51, 0.49, 0.49, 0.48, 0.47, 0.46, 0.45, 0.43, 0.39, 0.36, 0.34, 0.32, 0.31],
@@ -389,5 +385,27 @@ $(function() {
                 [0.08, 0.11, 0.16, 0.09, 0.03, 0.01, 0.02, 0.02, 0.03, 0.02, 0.01, 0.01, 0.02, 0.02, 0.01, 0.02, 0.02, 0.02, 0.02, 0.01, 0.02, 0.11, 0.03, 0.04, 0.06, 0.08, 0.1, 0.11],
                 [0.23, 0.23, 0.23, 0.19, 0.25, 0.21, 0.18, 0.18, 0.19, 0.18, 0.15, 0.16, 0.18, 0.13, 0.12, 0.12, 0.12, 0.09, 0.12, 0.12, 0.10, 0.09, 0.09, 0.08, 0.08, 0.09, 0.08],
                 [0.36, 0.37, 0.37, 0.34, 0.31, 0.31, 0.29, 0.29, 0.19, 0.29, 0.19, 0.28, 0.19, 0.16, 0.16, 0.21, 0.21, 0.21, 0.19, 0.21, 0.21, 0.15, 0.17, 0.17, 0.15, 0.15, 0.13, 0.15]];
+
+    function saveData(response_data) {
+        console.log(response_data);
+        var filename = "Response Spectrum Data.txt";
+
+        var blob = new Blob([response_data], {
+         type: "text/plain;charset=utf-8"
+        });
+        saveAs(blob, filename);
+    }
+
+    /*
+     * Download button callback.
+     */
+    $("#download-button").click(function() {
+        // Draw soil layers
+        var layers_soil_type = $(".soil-type");
+        var layers_depth = $(".depth");
+        var amp_res = amplified_response_spectrum(layers_soil_type, layers_depth, 0);
+        console.log(amp_res);
+        saveData(amp_res);
+    });
 
 });

@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Ground Motion</a>
+                <a class="navbar-brand" href="index.php">Ground Motion</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -89,6 +89,9 @@
                         <li>
                             <a href="ground-motion.php"><i class="fa fa-bar-chart-o fa-fw"></i> Ground Motion</a>
                         </li>
+                        <li>
+                            <a href="help.html"><i class="fa fa-question fa-fw"></i> Help</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -101,7 +104,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Ground Motion Amplification</h1>
+                        <h1 class="page-header">
+                            Ground Motion Amplification
+                            <a href="./help.html#gm-amp" title="Help" target="_blank">
+                                <i class="fa fa-question-circle fa-fw"></i>
+                            </a>
+                        </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -120,6 +128,9 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     Add Borehole Data
+                                    <a href="./help.html#borehole-data" title="Help" target="_blank">
+                                        <i class="fa fa-question-circle fa-fw"></i>
+                                    </a>
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -154,17 +165,10 @@
                                 <!-- /.panel-body -->
                             </div>
                             <!-- /.panel -->
-                        <!-- </div> -->
-                        <!-- <div class="col-lg-2 col-lg-offset-9"> -->
                             <p class="pull-right">
-                            <!-- <div class="col-lg-1 pull-right"> -->
                                 <button type="button" class="btn btn-primary" id="clear-button">Clear All</button>
-                            <!-- </div> -->
-                            <!-- <div class="col-lg-1 pull-right"> -->
                                 <button type="button" class="btn btn-primary" id="submit-button">Submit</button>
-                            <!-- </div> -->
                             </p>
-                        <!-- </div> -->
                     </div>
                     <div class="col-lg-6">
                         <!-- <canvas id="soil-profile" style="border:1px solid #000000;"></canvas> -->
@@ -178,6 +182,9 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Response Spectrum
+                                <a href="./help.html#response-spectrum" title="Help" target="_blank">
+                                    <i class="fa fa-question-circle fa-fw"></i>
+                                </a>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -194,6 +201,9 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Amplified Response Spectrum
+                                <a href="./help.html#response-spectrum" title="Help" target="_blank">
+                                    <i class="fa fa-question-circle fa-fw"></i>
+                                </a>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -204,14 +214,19 @@
                             <!-- /.panel-body -->
                         </div>
                         <!-- /.panel -->
-
+                        <button type="button" class="btn btn-primary btn-info btn-lg btn-block" id="download-button">Download response spectrum data</button>
                     </div>
                 </div>
             </div>
             <!-- /.container-fluid -->
+            <br />
+            <footer class="footer">
+              <div class="container">
+                <p class="text-muted text-center">Copyright &#169; EERC 2002-2017</p>
+              </div>
+            </footer>
         </div>
         <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
 

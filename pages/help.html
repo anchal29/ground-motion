@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ground Motion - Help</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.php">Ground Motion</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="index.php"><i class="fa fa-home fa-fw"></i> Home </a>
+                        </li>
+                        <li>
+                            <a href="ground-motion.php"><i class="fa fa-bar-chart-o fa-fw"></i> Ground Motion</a>
+                        </li>
+                        <li class="active">
+                            <a href="help.html"><i class="fa fa-question fa-fw"></i> Help</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-11" id ="gm">
+                            <h1 class="page-header">Ground Motions</h1>
+<!--                             <div class="row">
+                                <div class="col-lg-9"> -->
+                                    <p>
+                                    On the average, 10,000 people die each year from earthquakes. A UNESCO study gives damage losses amounting to $10,000,000,000 from 1926 to 1950 from earthquakes. In Central Asia in this interval two towns and 200 villages were destroyed. Since then several towns including Ashkhabad (1948), Agadir (1960), Skopje (1963), Managua (1972), Gemona (1976), Tangshan (1976), Mexico City (1985), Spitak (1988), Kobe (1995), cities in Turkey and Taiwan (1999) and hundreds of villages have been severely damaged by ground shaking. Historical writings testify to man’s long concern about earthquake hazards.
+                                    </p>
+                                    <p>
+                                    Ground motion generated during an earthquake are very complex, producing translation in the general three directions along with the presence of rotation. Today with the advent of accelerometer and seismometers, weak or strong ground motions can be recorded in the translational directions easily. Earthquakes motion are recorded in terms of ground displacement, velocity or acceleration. In general an earthquake lasts for some time duration and during that duration the ground  displacement, velocity or acceleration are recorded by these seismographs or accelerographs for weak or strong ground motions respectively. These recorded data are used by engineers and scientist for analysis, design, etc.
+                                    </p>
+                                    <p>
+                                    This web page provides an interactive interface to visualize some of the provided ground motions data and compare it with different ground motions. Tabular, graphical and raw data can be extracted through this and can be used to study the ground motion and the effect of soil amplification on it. The ground motion amplification page(home page) allows user to choose between any of the present ground motions and then choose a dynamic soil profile. Then it calculates the response spectrum beacause of the created soild profile on the choosen ground motion. The response spectrum spectrum of ground motion due to the acceleration at bedrock level and at the surface level is shown to capture the effect of soil profile on it.
+                                    </p>
+                                <!-- </div>
+                            </div> -->
+                    </div>
+                    <!-- /.col-lg-11 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-11" id ="gm-amp">
+                        <h3 class="page-header">Ground motion amplification</h3>
+                        <img src="../images/amplification.gif" class="img-responsive size" style="float: right;">
+                        <p>Most earthquake fatalities and damage occur when buildings and other structures fail during violent shaking caused by seismic waves, which travel through the ground from the rupturing fault like the ripples from a pebble dropped into a pond. The intensity of shaking depends on the quake magnitude (size of the pebble) and distance from the fault (ripples get smaller as they radiate outward). However, the radiation of seismic waves is much more complex than the steady progression of circular ripples in a pond. One reason is that the Earth's crust is not homogeneous like water, but rather a complex mixture of rocks and sediments of varying types that respond to shaking in different ways. In a single earthquake, the shaking at one site can easily be 10 times stronger than at a neighboring site, even when their distance from the ruptured fault is the same.
+                        </p>
+                        <p>Amplitudes of seismic waves increase significantly as they pass through soft soil layers near the earth's surface. This phenomenon, commonly known as <b>site amplification</b>, is a major factor influencing the extent of damage on structures. The increase is due to the low impedance of soil layers near the surface, where impedance is defined as the product of the mass density of soil and the wave propagation velocity. It is crucial that site amplification is accounted for when designing structures on soft soils. In more general term seismic waves travel faster through hard rocks than through softer rocks and sediments. As the waves pass from harder to softer rocks and slow down, they must get bigger in amplitude to carry the same amount of energy. Thus, shaking tends to be stronger at sites with softer surface layers, where seismic waves move more slowly. </p>
+                        <p>
+                        The characteristics of site amplification at a given site can be estimated by analytical models, as well as field tests. Analytical models require as inputs the geometry of all soil layers from surface to bedrock, their dynamic properties (e.g. density, wave velocity, damping), and the incident bedrock motions. Field tests involve recording and analyzing the dynamic response of sites to artificial excitations, ambient forces, and actual earthquakes. The most reliable estimates of site amplification are obtained by analyzing the recorded motions of the site during strong earthquakes. These site amplification or site effects, are inevitably reflected in seismic code provisions. The selection of appropriate elastic response spectra according to soil categories and seismic intensity is the simplest way to account for site effects both for engineering projects and for a general-purpose microzonation study. Most of the contemporary seismic codes have accepted these “site effects” and incorporated them by considering either a constant amplification factor for different site or by considering other aspects like the shaking intensity, near field conditions, etc.</p>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-11" id ="borehole-data">
+                        <h3 class="page-header">Borehole data</h3>
+                        <p>
+                            Borehole data are records of boreholes, shafts and wells from all forms of drilling and site investigation work. The depth of these boreholes can vary from meters to kilometers. There are various varities of borehole data used for  geotechnical investigation, environmental site assessment, mineral exploration, temperature measurement, etc. Here borehole data is used to get soil profile which is used to calculate the soil amplification. Several investigator proposed methods for classifying soil and rock based on their site-dependent amplification properties(Will et al. 2000, Borcherdt et al. 1994, etc). In Joyner et al. (1981) it was proposed that site condition can be classified on the basis of average shear wave velocities (velocity at which the rock or soil transmits shear waves (S-waves)) to depth equal to one quarter of the wavelength of predominant frequency of interest.
+                        </p>
+                        <p>
+                            So the method proposed by Borcherdt became a widely accepted notion and now the National Earthquake Hazards Reduction Program (NEHRP) has defined 5 soil types based on their shear-wave velocity (Vs). Shaking is stronger where the shear wave velocity is lower. The following table shows the soil classification on the basis of the shear wave velocity.
+                            
+                        </p>
+                    </div>
+                </div>
+                <div class="row">    
+                    <div class="col-lg-11">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <b>Soil type classification as per NEHRP</b>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Site Class</th>
+                                                <th>Description</th>
+                                                <th>Average shear wave velocity (V30 in m/s)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>A</td>
+                                                <td>Hard rock</td>
+                                                <td>More than 1500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>B</td>
+                                                <td>Rock</td>
+                                                <td>Between 760 and 1500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>C</td>
+                                                <td>Very dense soil and soft rock</td>
+                                                <td>Between 360 and 760</td>
+                                            </tr>
+                                            <tr>
+                                                <td>D</td>
+                                                <td>Stiff soil</td>
+                                                <td>Between 180 and 360</td>
+                                            </tr>
+                                            <tr>
+                                                <td>E</td>
+                                                <td>Soft Clay</td>
+                                                <td>Less than 180</td>
+                                            </tr>
+                                            <tr>
+                                                <td>F</td>
+                                                <td>Soils requiring site-specific evaluations</td>
+                                                <td>-</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-11" id ="response-spectrum">
+                        <h3 class="page-header">Response Spectrum</h3>
+                            <p>
+                            In general a response spectrum is simply a plot of the maximum acceleration(it can be velocity or displacement also but here acceleration is plotted) for a series of buildings(with different time period or natural frequency) subjected to a common ground motion. Response spectrum is a widely used by engineers to get the peak acceleration of a building with certain time period subjected to a ground motion. On the home page a general response specrtum is shown for selected ground motion at bedrock level. In the second graph, response spectrum is shown after selecting a soild profile which shows the peak ground acceleration values at bedrock and surface level. The surface spectral acceleration value is amplified because of the soil profile.
+                            </p>
+                            <blockquote>
+                                <p>A response spectrum is simply a plot of the peak or steady-state response (displacement, velocity or acceleration) of a series of oscillators of varying natural frequency, that are forced into motion by the same base vibration or shock. The resulting plot can then be used to pick off the response of any linear system, given its natural frequency of oscillation.</p>
+                            </blockquote>
+                        <!-- </p> -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+            <footer class="footer">
+              <div class="container">
+                <p class="text-muted text-center">Copyright &#169; EERC.</p>
+              </div>
+            </footer>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+</body>
+
+</html>
